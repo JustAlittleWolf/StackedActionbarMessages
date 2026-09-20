@@ -1,7 +1,7 @@
-package me.wolfii.stackeactionbarmessages.mixin;
+package me.wolfii.stackedactionbarmessages.mixin;
 
-import me.wolfii.stackeactionbarmessages.MessageSimilarity;
-import me.wolfii.stackeactionbarmessages.config.Config;
+import me.wolfii.stackedactionbarmessages.MessageSimilarity;
+import me.wolfii.stackedactionbarmessages.config.Config;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;

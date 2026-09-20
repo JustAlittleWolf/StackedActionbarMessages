@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.wolfii.stackeactionbarmessages.mixin",
+  "package": "me.wolfii.stackedactionbarmessages.mixin",
   "compatibilityLevel": "JAVA_25",
   "client": [
     "GuiMixin"

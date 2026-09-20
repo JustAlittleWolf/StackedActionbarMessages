@@ -1,4 +1,4 @@
-package me.wolfii.stackeactionbarmessages;
+package me.wolfii.stackedactionbarmessages;
 
 public final class MessageSimilarity {
     private MessageSimilarity() {

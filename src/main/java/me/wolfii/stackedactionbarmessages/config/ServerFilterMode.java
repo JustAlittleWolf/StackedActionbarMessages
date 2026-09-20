@@ -1,4 +1,4 @@
-package me.wolfii.stackeactionbarmessages.config;
+package me.wolfii.stackedactionbarmessages.config;
 
 public enum ServerFilterMode {
     ALL,

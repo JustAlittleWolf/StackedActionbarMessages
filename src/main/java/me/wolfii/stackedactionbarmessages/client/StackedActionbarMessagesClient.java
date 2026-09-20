@@ -1,6 +1,6 @@
-package me.wolfii.stackeactionbarmessages.client;
+package me.wolfii.stackedactionbarmessages.client;
 
-import me.wolfii.stackeactionbarmessages.config.Config;
+import me.wolfii.stackedactionbarmessages.config.Config;
 import net.fabricmc.api.ClientModInitializer;
 
 public class StackedActionbarMessagesClient implements ClientModInitializer {
