@@ -1,4 +1,4 @@
-package me.wolfii.stackedoverlaymessages.config;
+package me.wolfii.stackeactionbarmessages.config;
 
 import dev.isxander.yacl3.api.Option;
 import dev.isxander.yacl3.api.controller.ControllerBuilder;

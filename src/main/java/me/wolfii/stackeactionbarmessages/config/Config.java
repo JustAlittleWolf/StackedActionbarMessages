@@ -1,4 +1,4 @@
-package me.wolfii.stackedoverlaymessages.config;
+package me.wolfii.stackeactionbarmessages.config;
 
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
@@ -18,9 +18,9 @@ import java.util.Locale;
 
 public class Config {
     private static final ConfigClassHandler<Config> HANDLER = ConfigClassHandler.createBuilder(Config.class)
-        .id(Identifier.parse("stackedoverlaymessages"))
+        .id(Identifier.parse("stackeactionbarmessages"))
         .serializer(config -> GsonConfigSerializerBuilder.create(config)
-            .setPath(FabricLoader.getInstance().getConfigDir().resolve("stackedoverlaymessages.json"))
+            .setPath(FabricLoader.getInstance().getConfigDir().resolve("stackeactionbarmessages.json"))
             .build())
         .build();
 

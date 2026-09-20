@@ -1,8 +1,9 @@
-package me.wolfii.stackedoverlaymessages.mixin;
+package me.wolfii.stackeactionbarmessages.mixin;
 
-import me.wolfii.stackedoverlaymessages.MessageSimilarity;
-import me.wolfii.stackedoverlaymessages.config.Config;
+import me.wolfii.stackeactionbarmessages.MessageSimilarity;
+import me.wolfii.stackeactionbarmessages.config.Config;
 import net.minecraft.client.DeltaTracker;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -10,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 import org.jspecify.annotations.Nullable;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -22,8 +24,6 @@ import java.util.ArrayDeque;
 @Mixin(Gui.class)
 public abstract class GuiMixin {
     @Unique
-    private static final int LINE_SPACING = 13;
-    @Unique
     private final ArrayDeque<StackedOverlay> stackedOverlayMessages$stack = new ArrayDeque<>();
     @Shadow
     private @Nullable Component overlayMessageString;
@@ -32,8 +32,7 @@ public abstract class GuiMixin {
     @Shadow
     private boolean animateOverlayMessageColor;
 
-    @Shadow
-    public abstract Font getFont();
+    @Shadow @Final private Minecraft minecraft;
 
     @Inject(method = "setOverlayMessage", at = @At("HEAD"))
     private void stackedOverlayMessages$push(Component string, boolean animate, CallbackInfo ci) {
@@ -64,7 +63,7 @@ public abstract class GuiMixin {
 
         int index = 1;
         for (StackedOverlay entry : this.stackedOverlayMessages$stack) {
-            this.stackedOverlayMessages$extractOne(graphics, deltaTracker, this.getFont(), entry, index * LINE_SPACING);
+            this.stackedOverlayMessages$extractOne(graphics, deltaTracker, this.minecraft.font, entry, index * this.minecraft.font.lineHeight + 2);
             index++;
         }
     }

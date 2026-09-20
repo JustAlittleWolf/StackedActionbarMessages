@@ -1,28 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "stackedoverlaymessages",
+  "id": "stackedactionbarmessages",
   "version": "${version}",
-  "name": "StackedOverlayMessages",
-  "description": "Stacks overlay messages so they stay readable",
+  "name": "StackedActionbarMessages",
+  "description": "Stacks actionbar messages so they stay readable",
   "authors": [
     "JustAlittleWolf"
   ],
   "contact": {
-    "sources": "https://github.com/JustAlittleWolf/StackedOverlayMessages"
+    "sources": "https://github.com/JustAlittleWolf/StackedActionbarMessages"
   },
   "license": "MIT",
-  "icon": "assets/stackedoverlaymessages/icon.png",
+  "icon": "assets/stackedactionbarmessages/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
-      "me.wolfii.stackedoverlaymessages.client.StackedOverlayMessagesClient"
+      "me.wolfii.stackedactionbarmessages.client.StackedActionbarMessagesClient"
     ],
     "modmenu": [
-      "me.wolfii.stackedoverlaymessages.client.ModMenuIntegration"
+      "me.wolfii.stackedactionbarmessages.client.ModMenuIntegration"
     ]
   },
   "mixins": [
-    "stackedoverlaymessages.mixins.json"
+    "stackedactionbarmessages.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.19.0",
