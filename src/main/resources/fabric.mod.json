@@ -1,37 +1,36 @@
 {
-	"schemaVersion": 1,
-	"id": "stacked-overlay-messages",
-	"version": "${version}",
-	"name": "Stacked Overlay Messages",
-	"description": "Stacks overlay messages so they stay readable",
-	"authors": [
-		"JustAlittleWolf"
-	],
-	"contact": {
-		"issues": "https://github.com/JustAlittleWolf/StackedOverlayMessages/issues/",
-		"sources": "https://github.com/JustAlittleWolf/StackedOverlayMessages/"
-	},
-	"license": "MIT",
-	"icon": "assets/stacked-overlay-messages/icon.png",
-	"environment": "client",
-	"entrypoints": {
-		"client": [
-			"me.wolfii.stackedoverlaymessages.client.StackedOverlayMessagesClient"
-		],
-		"modmenu": [
-			"me.wolfii.stackedoverlaymessages.client.ModMenuIntegration"
-		]
-	},
-	"mixins": [
-		"stacked-overlay-messages.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.19.0",
-		"fabric-api": "*",
-		"minecraft": ">=${minecraft_version}",
-		"yet_another_config_lib_v3": ">=3.9.0"
-	},
-	"suggests": {
-		"modmenu": "*"
-	}
+  "schemaVersion": 1,
+  "id": "stackedoverlaymessages",
+  "version": "${version}",
+  "name": "StackedOverlayMessages",
+  "description": "Stacks overlay messages so they stay readable",
+  "authors": [
+    "JustAlittleWolf"
+  ],
+  "contact": {
+    "sources": "https://github.com/JustAlittleWolf/StackedOverlayMessages"
+  },
+  "license": "MIT",
+  "icon": "assets/stackedoverlaymessages/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.wolfii.stackedoverlaymessages.client.StackedOverlayMessagesClient"
+    ],
+    "modmenu": [
+      "me.wolfii.stackedoverlaymessages.client.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "stackedoverlaymessages.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}",
+    "yet_another_config_lib_v3": ">=3.9.0"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
 }
