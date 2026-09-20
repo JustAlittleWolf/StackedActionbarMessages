@@ -51,7 +51,7 @@ public class Config {
     @AutoGen(category = "servers")
     @ListGroup(valueFactory = StringListFactory.class, controllerFactory = StringListFactory.class)
     @SerialEntry
-    public List<String> servers = new ArrayList<>();
+    public List<String> filteredServers = new ArrayList<>();
 
     public static Config getConfig() {
         return HANDLER.instance();
@@ -101,7 +101,7 @@ public class Config {
 
     private boolean isListed(String current) {
         String normalizedCurrent = normalizeServer(current);
-        for (String entry : this.servers) {
+        for (String entry : this.filteredServers) {
             if (!entry.isBlank() && normalizeServer(entry).equals(normalizedCurrent)) {
                 return true;
             }

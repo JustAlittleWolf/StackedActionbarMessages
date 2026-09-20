@@ -9,8 +9,8 @@
 	"yacl3.config.minecraft:stackedactionbarmessages.similarityPercent.desc": "Some servers send very similar messages frequently (e.g. timers). The mod doesn't push messages it recognizes as similar onto the stack.\nThis setting controls how sensitive the similarity scoring is. A setting of 100% requires an exact match for two messages to be considered similar. 0% treats every message as similar.",
 	"yacl3.config.minecraft:stackedactionbarmessages.serverFilterMode": "Server filter",
 	"yacl3.config.minecraft:stackedactionbarmessages.serverFilterMode.desc": "Restrict stacking to a whitelist or blacklist of servers.",
-	"yacl3.config.minecraft:stackedactionbarmessages.servers": "Server list",
-	"yacl3.config.minecraft:stackedactionbarmessages.servers.desc": "Server addresses (host or host:port) used by the whitelist or blacklist.",
+	"yacl3.config.minecraft:stackedactionbarmessages.filteredServers": "Server list",
+	"yacl3.config.minecraft:stackedactionbarmessages.filteredServers.desc": "Server addresses (host or host:port) used by the whitelist or blacklist.",
 	"yacl3.config.enum.ServerFilterMode.none": "Disabled",
 	"yacl3.config.enum.ServerFilterMode.whitelist": "Whitelist",
 	"yacl3.config.enum.ServerFilterMode.blacklist": "Blacklist"
