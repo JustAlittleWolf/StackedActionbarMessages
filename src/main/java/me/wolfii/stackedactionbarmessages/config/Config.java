@@ -46,7 +46,7 @@ public class Config {
     @AutoGen(category = "servers")
     @EnumCycler
     @SerialEntry
-    public ServerFilterMode serverFilterMode = ServerFilterMode.ALL;
+    public ServerFilterMode serverFilterMode = ServerFilterMode.NONE;
 
     @AutoGen(category = "servers")
     @ListGroup(valueFactory = StringListFactory.class, controllerFactory = StringListFactory.class)
@@ -90,7 +90,7 @@ public class Config {
     }
 
     private boolean allowsCurrentServer() {
-        if (this.serverFilterMode == ServerFilterMode.ALL) {
+        if (this.serverFilterMode == ServerFilterMode.NONE) {
             return true;
         }
 

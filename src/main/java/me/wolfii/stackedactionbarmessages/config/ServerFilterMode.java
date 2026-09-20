@@ -1,7 +1,7 @@
 package me.wolfii.stackedactionbarmessages.config;
 
 public enum ServerFilterMode {
-    ALL,
+    NONE,
     WHITELIST,
     BLACKLIST
 }
