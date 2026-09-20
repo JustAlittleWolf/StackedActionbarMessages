@@ -1,6 +1,8 @@
 package me.wolfii.stackedoverlaymessages.mixin;
 
 import java.util.ArrayDeque;
+import me.wolfii.stackedoverlaymessages.MessageSimilarity;
+import me.wolfii.stackedoverlaymessages.config.Config;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
@@ -18,7 +20,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Gui.class)
 public abstract class GuiMixin {
-	private static final int MAX_DISPLAYED = 5;
 	private static final int LINE_SPACING = 13;
 
 	@Shadow
@@ -36,25 +37,33 @@ public abstract class GuiMixin {
 
 	@Inject(method = "setOverlayMessage", at = @At("HEAD"))
 	private void stackedOverlayMessages$push(Component message, boolean animate, CallbackInfo ci) {
-		this.stackedOverlayMessages$stack.removeIf(entry -> entry.message.equals(message));
-		if (this.overlayMessageString != null && this.overlayMessageTime > 0 && !this.overlayMessageString.equals(message)) {
+		Config config = Config.getConfig();
+		if (!config.shouldStack()) {
+			this.stackedOverlayMessages$stack.clear();
+			return;
+		}
+
+		String incoming = message.getString();
+		this.stackedOverlayMessages$stack.removeIf(entry -> this.stackedOverlayMessages$similar(entry.message, incoming, config));
+		if (this.overlayMessageString != null
+			&& this.overlayMessageTime > 0
+			&& !this.stackedOverlayMessages$similar(this.overlayMessageString, incoming, config)) {
 			this.stackedOverlayMessages$stack.addFirst(
 				new StackedOverlay(this.overlayMessageString, this.overlayMessageTime, this.animateOverlayMessageColor)
 			);
-			while (this.stackedOverlayMessages$stack.size() >= MAX_DISPLAYED) {
-				this.stackedOverlayMessages$stack.removeLast();
-			}
 		}
+		this.stackedOverlayMessages$trim(config);
 	}
 
 	@Inject(method = "tick()V", at = @At("TAIL"))
 	private void stackedOverlayMessages$tick(CallbackInfo ci) {
 		this.stackedOverlayMessages$stack.removeIf(entry -> --entry.time <= 0);
+		this.stackedOverlayMessages$trim(Config.getConfig());
 	}
 
 	@Inject(method = "extractOverlayMessage", at = @At("TAIL"))
 	private void stackedOverlayMessages$extract(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
-		if (this.stackedOverlayMessages$stack.isEmpty()) {
+		if (!Config.getConfig().shouldStack() || this.stackedOverlayMessages$stack.isEmpty()) {
 			return;
 		}
 
@@ -63,6 +72,19 @@ public abstract class GuiMixin {
 		for (StackedOverlay entry : this.stackedOverlayMessages$stack) {
 			this.stackedOverlayMessages$extractOne(graphics, deltaTracker, font, entry, index * LINE_SPACING);
 			index++;
+		}
+	}
+
+	@Unique
+	private boolean stackedOverlayMessages$similar(Component existing, String incoming, Config config) {
+		return MessageSimilarity.matches(existing.getString(), incoming, config.similarityPercent);
+	}
+
+	@Unique
+	private void stackedOverlayMessages$trim(Config config) {
+		int maxHistory = config.maxHistory();
+		while (this.stackedOverlayMessages$stack.size() > maxHistory) {
+			this.stackedOverlayMessages$stack.removeLast();
 		}
 	}
 
