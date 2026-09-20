@@ -4,6 +4,7 @@
   "package": "me.wolfii.stackedoverlaymessages.mixin",
   "compatibilityLevel": "JAVA_25",
   "client": [
+    "GuiMixin"
   ],
   "injectors": {
     "defaultRequire": 1
