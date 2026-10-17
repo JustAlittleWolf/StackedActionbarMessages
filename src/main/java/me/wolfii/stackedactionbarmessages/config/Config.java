@@ -36,7 +36,7 @@ public class Config {
     @AutoGen(category = "general")
     @IntSlider(min = 1, max = 10, step = 1)
     @SerialEntry
-    public int maxMessages = 5;
+    public int maxMessages = 3;
 
     @AutoGen(category = "general")
     @IntSlider(min = 0, max = 100, step = 1)
